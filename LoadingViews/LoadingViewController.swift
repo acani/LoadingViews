@@ -15,12 +15,9 @@ public class LoadingViewController : UIViewController, UIViewControllerTransitio
         self.title = title ?? "Connecting"
         transitioningDelegate = self
     }
+    required public init?(coder aDecoder: NSCoder) { fatalError("init(coder:) has not been implemented") } // NSCoding
 
     // MARK: - UIViewController
-
-    required public init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
 
     override public func viewDidLoad() {
         let containerView = UIView(frame: CGRect(x: 0, y: 0, width: 128, height: 128))
