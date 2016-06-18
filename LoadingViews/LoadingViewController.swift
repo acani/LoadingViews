@@ -1,12 +1,12 @@
 import UIKit
+import UIHelper
 
 public class LoadingViewController : UIViewController, UIViewControllerTransitioningDelegate {
+    public static let sharedLoadingViewController = LoadingViewController()
     private let fadeAnimator = FadeAnimator()
 
     override public var title: String? {
-        didSet {
-            (viewIfLoaded?.viewWithTag(3) as! UILabel?)?.text = title
-        }
+        didSet { (viewIfLoaded?.viewWithTag(31) as! UILabel?)?.text = title }
     }
 
     public init(title: String? = nil) {
@@ -35,11 +35,25 @@ public class LoadingViewController : UIViewController, UIViewControllerTransitio
 
         let titleLabel = UILabel(frame: CGRect(x: 0, y: 128-20-16, width: 128, height: 20))
         titleLabel.font = UIFont.boldSystemFontOfSize(16)
-        titleLabel.tag = 3
+        titleLabel.tag = 31
         titleLabel.text = title
         titleLabel.textAlignment = .Center
         titleLabel.textColor = .whiteColor()
         containerView.addSubview(titleLabel)
+    }
+
+    public static func present() {
+        presentWithTitle("Connecting")
+    }
+
+    public static func presentWithTitle(title: String) {
+        sharedLoadingViewController.title = title
+        print(sharedLoadingViewController.title)
+        UIApplication.auh_topmostViewController.auh_presentViewController(sharedLoadingViewController)
+    }
+
+    public static func dismiss(completion: (() -> Void)?) {
+        sharedLoadingViewController.dismissViewControllerAnimated(true, completion: completion)
     }
 
     // MARK: - UIViewControllerTransitioningDelegate
@@ -69,6 +83,7 @@ class FadeAnimator: NSObject, UIViewControllerAnimatedTransitioning {
 
         if presenting {
             let containerView = transitionContext.containerView()!
+            fadingView.alpha = 1
             containerView.addSubview(fadingView)
             transitionContext.completeTransition(true)
         } else {

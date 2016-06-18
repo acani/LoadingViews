@@ -11,6 +11,7 @@
 		D25751C81CDCDBDF0089EA85 /* LoadingViewsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25751C71CDCDBDF0089EA85 /* LoadingViewsTests.swift */; };
 		D25751D41CDCDC7A0089EA85 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25751D21CDCDC7A0089EA85 /* LoadingViewController.swift */; };
 		D25751D51CDCDC7A0089EA85 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25751D31CDCDC7A0089EA85 /* LoadingView.swift */; };
+		D2DC3D451D11840F001C45DC /* UIHelper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2DC3D421D118408001C45DC /* UIHelper.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -20,6 +21,20 @@
 			proxyType = 1;
 			remoteGlobalIDString = D25751B71CDCDBDF0089EA85;
 			remoteInfo = LoadingViews;
+		};
+		D2DC3D411D118408001C45DC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D2DC3D3C1D118408001C45DC /* UIHelper.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D25348B01D0EF1310048DC07;
+			remoteInfo = UIHelper;
+		};
+		D2DC3D431D118408001C45DC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D2DC3D3C1D118408001C45DC /* UIHelper.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D25348BA1D0EF1310048DC07;
+			remoteInfo = UIHelperTests;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -31,6 +46,7 @@
 		D25751C91CDCDBDF0089EA85 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D25751D21CDCDC7A0089EA85 /* LoadingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 		D25751D31CDCDC7A0089EA85 /* LoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		D2DC3D3C1D118408001C45DC /* UIHelper.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = UIHelper.xcodeproj; path = ../UIHelper/UIHelper.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -38,6 +54,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2DC3D451D11840F001C45DC /* UIHelper.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -57,6 +74,7 @@
 			children = (
 				D25751BA1CDCDBDF0089EA85 /* LoadingViews */,
 				D25751C61CDCDBDF0089EA85 /* LoadingViewsTests */,
+				D2DC3D3B1D1183D9001C45DC /* Libraries */,
 				D25751B91CDCDBDF0089EA85 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -87,6 +105,23 @@
 				D25751C91CDCDBDF0089EA85 /* Info.plist */,
 			);
 			path = LoadingViewsTests;
+			sourceTree = "<group>";
+		};
+		D2DC3D3B1D1183D9001C45DC /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				D2DC3D3C1D118408001C45DC /* UIHelper.xcodeproj */,
+			);
+			name = Libraries;
+			sourceTree = "<group>";
+		};
+		D2DC3D3D1D118408001C45DC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D2DC3D421D118408001C45DC /* UIHelper.framework */,
+				D2DC3D441D118408001C45DC /* UIHelperTests.xctest */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -166,6 +201,12 @@
 			mainGroup = D25751AE1CDCDBDF0089EA85;
 			productRefGroup = D25751B91CDCDBDF0089EA85 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = D2DC3D3D1D118408001C45DC /* Products */;
+					ProjectRef = D2DC3D3C1D118408001C45DC /* UIHelper.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				D25751B71CDCDBDF0089EA85 /* LoadingViews */,
@@ -173,6 +214,23 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		D2DC3D421D118408001C45DC /* UIHelper.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = UIHelper.framework;
+			remoteRef = D2DC3D411D118408001C45DC /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		D2DC3D441D118408001C45DC /* UIHelperTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = UIHelperTests.xctest;
+			remoteRef = D2DC3D431D118408001C45DC /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		D25751B61CDCDBDF0089EA85 /* Resources */ = {
@@ -385,6 +443,7 @@
 				D25751CE1CDCDBDF0089EA85 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D25751CF1CDCDBDF0089EA85 /* Build configuration list for PBXNativeTarget "LoadingViewsTests" */ = {
 			isa = XCConfigurationList;
@@ -393,6 +452,7 @@
 				D25751D11CDCDBDF0089EA85 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
