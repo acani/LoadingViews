@@ -48,7 +48,6 @@ public class LoadingViewController : UIViewController, UIViewControllerTransitio
 
     public static func presentWithTitle(title: String) {
         sharedLoadingViewController.title = title
-        print(sharedLoadingViewController.title)
         UIApplication.auh_topmostViewController.auh_presentViewController(sharedLoadingViewController)
     }
 
