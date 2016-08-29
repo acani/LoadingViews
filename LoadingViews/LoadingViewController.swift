@@ -6,7 +6,7 @@ public class LoadingViewController : UIViewController, UIViewControllerTransitio
     private let fadeAnimator = FadeAnimator()
 
     override public var title: String? {
-        didSet { (viewIfLoaded?.viewWithTag(31) as! UILabel?)?.text = title }
+        didSet { (viewIfLoaded?.viewWithTag(31)! as! UILabel?)?.text = title }
     }
 
     public init(title: String? = nil) {

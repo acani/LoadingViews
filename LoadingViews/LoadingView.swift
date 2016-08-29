@@ -2,11 +2,11 @@ import UIKit
 
 public class LoadingView: UIView {
     private var activityIndicatorView: UIActivityIndicatorView {
-        return self.viewWithTag(1) as! UIActivityIndicatorView
+        return viewWithTag(1)! as! UIActivityIndicatorView
     }
 
     public var titleLabel: UILabel {
-        return self.viewWithTag(2) as! UILabel
+        return viewWithTag(2)! as! UILabel
     }
 
     public convenience init() {
@@ -29,14 +29,14 @@ public class LoadingView: UIView {
         titleLabel.userInteractionEnabled = false
 
         super.init(frame: CGRectZero)
-        self.userInteractionEnabled = false
+        userInteractionEnabled = false
 
-        self.addSubview(activityIndicatorView)
-        self.addSubview(titleLabel)
+        addSubview(activityIndicatorView)
+        addSubview(titleLabel)
 
-        self.translatesAutoresizingMaskIntoConstraints = false
+        translatesAutoresizingMaskIntoConstraints = false
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        self.addConstraints([
+        addConstraints([
             NSLayoutConstraint(item: self, attribute: .Trailing, relatedBy: .Equal, toItem: titleLabel, attribute: .Trailing, multiplier: 1, constant: 0),
             NSLayoutConstraint(item: self, attribute: .Height, relatedBy: .Equal, toItem: activityIndicatorView, attribute: .Height, multiplier: 1, constant: 0),
             NSLayoutConstraint(item: titleLabel, attribute: .Leading, relatedBy: .Equal, toItem: self, attribute: .Leading, multiplier: 1, constant: width1+4),
@@ -58,7 +58,7 @@ public class LoadingView: UIView {
     }
 
     public func dismiss() {
-        self.activityIndicatorView.stopAnimating()
-        self.removeFromSuperview()
+        activityIndicatorView.stopAnimating()
+        removeFromSuperview()
     }
 }
