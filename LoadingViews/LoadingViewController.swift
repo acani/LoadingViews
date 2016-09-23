@@ -1,17 +1,17 @@
 import UIKit
 import UIHelper
 
-public class LoadingViewController : UIViewController, UIViewControllerTransitioningDelegate {
-    public static let sharedLoadingViewController = LoadingViewController()
+open class LoadingViewController : UIViewController, UIViewControllerTransitioningDelegate {
+    open static let sharedLoadingViewController = LoadingViewController()
     private let fadeAnimator = FadeAnimator()
 
-    override public var title: String? {
+    override open var title: String? {
         didSet { (viewIfLoaded?.viewWithTag(31)! as! UILabel?)?.text = title }
     }
 
     public init(title: String? = nil) {
         super.init(nibName: nil, bundle: nil)
-        modalPresentationStyle = .OverFullScreen
+        modalPresentationStyle = .overFullScreen
         self.title = title ?? "Connecting"
         transitioningDelegate = self
     }
@@ -19,50 +19,50 @@ public class LoadingViewController : UIViewController, UIViewControllerTransitio
 
     // MARK: - UIViewController
 
-    override public func viewDidLoad() {
+    override open func viewDidLoad() {
         let containerView = UIView(frame: CGRect(x: 0, y: 0, width: 128, height: 128))
-        containerView.autoresizingMask = [.FlexibleTopMargin, .FlexibleLeftMargin, .FlexibleBottomMargin, .FlexibleRightMargin]
+        containerView.autoresizingMask = [.flexibleTopMargin, .flexibleLeftMargin, .flexibleBottomMargin, .flexibleRightMargin]
         containerView.backgroundColor = UIColor(white: 0, alpha: 0.75)
-        let screenBounds = UIScreen.mainScreen().bounds
+        let screenBounds = UIScreen.main.bounds
         containerView.center = CGPoint(x: screenBounds.midX, y: screenBounds.midY)
         containerView.layer.cornerRadius = 10
         view.addSubview(containerView)
 
-        let activityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: .WhiteLarge)
+        let activityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
         activityIndicatorView.center = CGPoint(x: 128/2, y: 128/2)
         activityIndicatorView.startAnimating()
         containerView.addSubview(activityIndicatorView)
 
         let titleLabel = UILabel(frame: CGRect(x: 0, y: 128-20-16, width: 128, height: 20))
-        titleLabel.font = UIFont.boldSystemFontOfSize(16)
+        titleLabel.font = UIFont.boldSystemFont(ofSize: 16)
         titleLabel.tag = 31
         titleLabel.text = title
-        titleLabel.textAlignment = .Center
-        titleLabel.textColor = .whiteColor()
+        titleLabel.textAlignment = .center
+        titleLabel.textColor = .white
         containerView.addSubview(titleLabel)
     }
 
-    public static func present() {
-        presentWithTitle("Connecting")
+    open static func present() {
+        present(withTitle: "Connecting")
     }
 
-    public static func presentWithTitle(title: String) {
+    open static func present(withTitle title: String) {
         sharedLoadingViewController.title = title
-        UIApplication.auh_topmostViewController.auh_presentViewController(sharedLoadingViewController)
+        UIApplication.auh_topmostViewController.present(sharedLoadingViewController, animated: true)
     }
 
-    public static func dismiss(completion: (() -> Void)?) {
-        sharedLoadingViewController.dismissViewControllerAnimated(true, completion: completion)
+    open static func dismiss(completion: (() -> Swift.Void)? = nil) {
+        sharedLoadingViewController.dismiss(animated: true, completion: completion)
     }
 
     // MARK: - UIViewControllerTransitioningDelegate
 
-    public func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    open func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         fadeAnimator.presenting = true
         return fadeAnimator
     }
 
-    public func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    open func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         fadeAnimator.presenting = false
         return fadeAnimator
     }
@@ -72,21 +72,21 @@ class FadeAnimator: NSObject, UIViewControllerAnimatedTransitioning {
     static let duration = 0.3
     var presenting = false
 
-    func transitionDuration(transitionContext: UIViewControllerContextTransitioning?) -> NSTimeInterval {
+    func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         return FadeAnimator.duration
     }
 
-    func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
-        let key = presenting ? UITransitionContextToViewKey : UITransitionContextFromViewKey
-        let fadingView = transitionContext.viewForKey(key)!
+    func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
+        let key = presenting ? UITransitionContextViewKey.to : UITransitionContextViewKey.from
+        let fadingView = transitionContext.view(forKey: key)!
 
         if presenting {
-            let containerView = transitionContext.containerView()!
+            let containerView = transitionContext.containerView
             fadingView.alpha = 1
             containerView.addSubview(fadingView)
             transitionContext.completeTransition(true)
         } else {
-            UIView.animateWithDuration(FadeAnimator.duration, animations: { fadingView.alpha = 0 }, completion: { _ in
+            UIView.animate(withDuration: FadeAnimator.duration, animations: { fadingView.alpha = 0 }, completion: { _ in
                 transitionContext.completeTransition(true)
             })
         }
