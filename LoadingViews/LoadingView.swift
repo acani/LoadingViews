@@ -20,7 +20,7 @@ open class LoadingView: UIView {
         activityIndicatorView.tag = 1
         activityIndicatorView.isUserInteractionEnabled = false
 
-        let titleLabel = UILabel(frame: CGRect.zero)
+        let titleLabel = UILabel(frame: .zero)
         titleLabel.font = UIFont.systemFont(ofSize: 14)
         titleLabel.tag = 2
         titleLabel.text = title
@@ -28,7 +28,7 @@ open class LoadingView: UIView {
         titleLabel.textColor = UIColor(white: 102/255, alpha: 1)
         titleLabel.isUserInteractionEnabled = false
 
-        super.init(frame: CGRect.zero)
+        super.init(frame: .zero)
         isUserInteractionEnabled = false
 
         addSubview(activityIndicatorView)
