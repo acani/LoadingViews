@@ -21,7 +21,7 @@ open class LoadingView: UIView {
         activityIndicatorView.isUserInteractionEnabled = false
 
         let titleLabel = UILabel(frame: .zero)
-        titleLabel.font = UIFont.systemFont(ofSize: 14)
+        titleLabel.font = .systemFont(ofSize: 14)
         titleLabel.tag = 2
         titleLabel.text = title
         titleLabel.textAlignment = .center

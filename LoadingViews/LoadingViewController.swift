@@ -34,7 +34,7 @@ open class LoadingViewController : UIViewController, UIViewControllerTransitioni
         containerView.addSubview(activityIndicatorView)
 
         let titleLabel = UILabel(frame: CGRect(x: 0, y: 128-20-16, width: 128, height: 20))
-        titleLabel.font = UIFont.boldSystemFont(ofSize: 16)
+        titleLabel.font = .boldSystemFont(ofSize: 16)
         titleLabel.tag = 31
         titleLabel.text = title
         titleLabel.textAlignment = .center
