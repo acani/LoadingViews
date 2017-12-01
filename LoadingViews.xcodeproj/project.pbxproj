@@ -185,7 +185,7 @@
 				TargetAttributes = {
 					D25751B71CDCDBDF0089EA85 = {
 						CreatedOnToolsVersion = 7.3;
-						LastSwiftMigration = 0800;
+						LastSwiftMigration = 0910;
 					};
 					D25751C11CDCDBDF0089EA85 = {
 						CreatedOnToolsVersion = 7.3;
@@ -404,7 +404,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -423,7 +423,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.acani.LoadingViews;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
