@@ -14,7 +14,7 @@ open class LoadingView: UIView {
     }
 
     public init(title: String) {
-        let activityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+        let activityIndicatorView = UIActivityIndicatorView(style: .gray)
         let width1 = activityIndicatorView.frame.width
         activityIndicatorView.center = CGPoint(x: width1/2, y: width1/2)
         activityIndicatorView.tag = 1

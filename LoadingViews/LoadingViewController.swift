@@ -2,7 +2,7 @@ import UIKit
 import UIHelper
 
 open class LoadingViewController : UIViewController, UIViewControllerTransitioningDelegate {
-    open static let sharedLoadingViewController = LoadingViewController()
+    public static let sharedLoadingViewController = LoadingViewController()
     private let fadeAnimator = FadeAnimator()
 
     override open var title: String? {
@@ -28,7 +28,7 @@ open class LoadingViewController : UIViewController, UIViewControllerTransitioni
         containerView.layer.cornerRadius = 10
         view.addSubview(containerView)
 
-        let activityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
+        let activityIndicatorView = UIActivityIndicatorView(style: .whiteLarge)
         activityIndicatorView.center = CGPoint(x: 128/2, y: 128/2)
         activityIndicatorView.startAnimating()
         containerView.addSubview(activityIndicatorView)
@@ -42,16 +42,16 @@ open class LoadingViewController : UIViewController, UIViewControllerTransitioni
         containerView.addSubview(titleLabel)
     }
 
-    open static func present() {
+    public static func present() {
         present(withTitle: "Connecting")
     }
 
-    open static func present(withTitle title: String) {
+    public static func present(withTitle title: String) {
         sharedLoadingViewController.title = title
         UIApplication.auh_topmostViewController.present(sharedLoadingViewController, animated: true)
     }
 
-    open static func dismiss(completion: (() -> Swift.Void)? = nil) {
+    public static func dismiss(completion: (() -> Swift.Void)? = nil) {
         sharedLoadingViewController.dismiss(animated: true, completion: completion)
     }
 
