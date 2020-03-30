@@ -44,7 +44,12 @@ open class LoadingView: UIView {
       NSLayoutConstraint(item: titleLabel, attribute: .height, relatedBy: .equal, toItem: activityIndicatorView, attribute: .height, multiplier: 1, constant: -1)
     ])
   }
-  required public init?(coder aDecoder: NSCoder) { fatalError("init(coder:) has not been implemented") } // NSCoding
+
+  // MARK: - NSCoding
+
+  required public init?(coder: NSCoder) {
+    fatalError("init(coder:) hasn't been implemented")
+  }
 
   open func show(in viewController: UIViewController) {
     activityIndicatorView.startAnimating()

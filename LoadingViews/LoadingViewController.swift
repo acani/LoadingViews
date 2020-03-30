@@ -1,7 +1,7 @@
 import UIKit
 import UIHelper
 
-open class LoadingViewController : UIViewController, UIViewControllerTransitioningDelegate {
+open class LoadingViewController: UIViewController, UIViewControllerTransitioningDelegate {
   public static let sharedLoadingViewController = LoadingViewController()
   private let fadeAnimator = FadeAnimator()
 
@@ -15,7 +15,12 @@ open class LoadingViewController : UIViewController, UIViewControllerTransitioni
     self.title = title ?? "Connecting"
     transitioningDelegate = self
   }
-  required public init?(coder aDecoder: NSCoder) { fatalError("init(coder:) has not been implemented") } // NSCoding
+
+  // MARK: - NSCoding
+
+  required public init?(coder: NSCoder) {
+    fatalError("init(coder:) hasn't been implemented")
+  }
 
   // MARK: - UIViewController
 
