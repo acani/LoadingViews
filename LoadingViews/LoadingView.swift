@@ -14,7 +14,7 @@ open class LoadingView: UIView {
   }
 
   public init(title: String) {
-    let activityIndicatorView = UIActivityIndicatorView(style: .gray)
+    let activityIndicatorView = UIActivityIndicatorView(style: .medium)
     let width1 = activityIndicatorView.frame.width
     activityIndicatorView.center = CGPoint(x: width1/2, y: width1/2)
     activityIndicatorView.tag = 1
@@ -37,19 +37,57 @@ open class LoadingView: UIView {
     translatesAutoresizingMaskIntoConstraints = false
     titleLabel.translatesAutoresizingMaskIntoConstraints = false
     NSLayoutConstraint.activate([
-      NSLayoutConstraint(item: self, attribute: .trailing, relatedBy: .equal, toItem: titleLabel, attribute: .trailing, multiplier: 1, constant: 0),
-      NSLayoutConstraint(item: self, attribute: .height, relatedBy: .equal, toItem: activityIndicatorView, attribute: .height, multiplier: 1, constant: 0),
-      NSLayoutConstraint(item: titleLabel, attribute: .leading, relatedBy: .equal, toItem: self, attribute: .leading, multiplier: 1, constant: width1+4),
-      NSLayoutConstraint(item: titleLabel, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1, constant: 0),
-      NSLayoutConstraint(item: titleLabel, attribute: .height, relatedBy: .equal, toItem: activityIndicatorView, attribute: .height, multiplier: 1, constant: -1)
+      NSLayoutConstraint(
+        item: self,
+        attribute: .trailing,
+        relatedBy: .equal,
+        toItem: titleLabel,
+        attribute: .trailing,
+        multiplier: 1,
+        constant: 0
+      ),
+      NSLayoutConstraint(
+        item: self,
+        attribute: .height,
+        relatedBy: .equal,
+        toItem: activityIndicatorView,
+        attribute: .height,
+        multiplier: 1,
+        constant: 0
+      ),
+      NSLayoutConstraint(
+        item: titleLabel,
+        attribute: .leading,
+        relatedBy: .equal,
+        toItem: self,
+        attribute: .leading,
+        multiplier: 1,
+        constant: width1+4
+      ),
+      NSLayoutConstraint(
+        item: titleLabel,
+        attribute: .top,
+        relatedBy: .equal,
+        toItem: self,
+        attribute: .top,
+        multiplier: 1,
+        constant: 0
+      ),
+      NSLayoutConstraint(
+        item: titleLabel,
+        attribute: .height,
+        relatedBy: .equal,
+        toItem: activityIndicatorView,
+        attribute: .height,
+        multiplier: 1,
+        constant: -1
+      )
     ])
   }
 
   // MARK: - NSCoding
 
-  required public init?(coder: NSCoder) {
-    fatalError("init(coder:) hasn't been implemented")
-  }
+  required public init?(coder: NSCoder) { fatalError("init(coder:) hasn't been implemented") }
 
   open func show(in viewController: UIViewController) {
     activityIndicatorView.startAnimating()
@@ -57,8 +95,24 @@ open class LoadingView: UIView {
     let view = viewController.view
     view?.addSubview(self)
     NSLayoutConstraint.activate([
-      NSLayoutConstraint(item: self, attribute: .centerX, relatedBy: .equal, toItem: view, attribute: .centerX, multiplier: 1, constant: 0),
-      NSLayoutConstraint(item: self, attribute: .centerY, relatedBy: .equal, toItem: view, attribute: .centerY, multiplier: 1, constant: viewController.topLayoutGuide.length)
+      NSLayoutConstraint(
+        item: self,
+        attribute: .centerX,
+        relatedBy: .equal,
+        toItem: view,
+        attribute: .centerX,
+        multiplier: 1,
+        constant: 0
+      ),
+      NSLayoutConstraint(
+        item: self,
+        attribute: .centerY,
+        relatedBy: .equal,
+        toItem: view,
+        attribute: .centerY,
+        multiplier: 1,
+        constant: 0
+      )
     ])
   }
 

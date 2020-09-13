@@ -18,22 +18,21 @@ open class LoadingViewController: UIViewController, UIViewControllerTransitionin
 
   // MARK: - NSCoding
 
-  required public init?(coder: NSCoder) {
-    fatalError("init(coder:) hasn't been implemented")
-  }
+  required public init?(coder: NSCoder) { fatalError("init(coder:) hasn't been implemented") }
 
   // MARK: - UIViewController
 
   override open func viewDidLoad() {
     let containerView = UIView(frame: CGRect(x: 0, y: 0, width: 128, height: 128))
-    containerView.autoresizingMask = [.flexibleTopMargin, .flexibleLeftMargin, .flexibleBottomMargin, .flexibleRightMargin]
+    containerView.autoresizingMask =
+      [.flexibleTopMargin, .flexibleLeftMargin, .flexibleBottomMargin, .flexibleRightMargin]
     containerView.backgroundColor = UIColor(white: 0, alpha: 0.75)
     let screenBounds = UIScreen.main.bounds
     containerView.center = CGPoint(x: screenBounds.midX, y: screenBounds.midY)
     containerView.layer.cornerRadius = 10
     view.addSubview(containerView)
 
-    let activityIndicatorView = UIActivityIndicatorView(style: .whiteLarge)
+    let activityIndicatorView = UIActivityIndicatorView(style: .large)
     activityIndicatorView.center = CGPoint(x: 128/2, y: 128/2)
     activityIndicatorView.startAnimating()
     containerView.addSubview(activityIndicatorView)
@@ -56,18 +55,24 @@ open class LoadingViewController: UIViewController, UIViewControllerTransitionin
     UIApplication.auh_topmostViewController.present(sharedLoadingViewController, animated: true)
   }
 
-  public static func dismiss(completion: (() -> Swift.Void)? = nil) {
+  public static func dismiss(completion: (() -> Void)? = nil) {
     sharedLoadingViewController.dismiss(animated: true, completion: completion)
   }
 
   // MARK: - UIViewControllerTransitioningDelegate
 
-  open func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+  open func animationController(
+    forPresented presented: UIViewController,
+    presenting: UIViewController,
+    source: UIViewController
+  ) -> UIViewControllerAnimatedTransitioning? {
     fadeAnimator.presenting = true
     return fadeAnimator
   }
 
-  open func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+  open func animationController(
+    forDismissed dismissed: UIViewController
+  ) -> UIViewControllerAnimatedTransitioning? {
     fadeAnimator.presenting = false
     return fadeAnimator
   }
@@ -77,7 +82,11 @@ class FadeAnimator: NSObject, UIViewControllerAnimatedTransitioning {
   static let duration = 0.3
   var presenting = false
 
-  func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
+  // MARK: - UIViewControllerAnimatedTransitioning
+
+  func transitionDuration(
+    using transitionContext: UIViewControllerContextTransitioning?
+  ) -> TimeInterval {
     return FadeAnimator.duration
   }
 
@@ -91,9 +100,11 @@ class FadeAnimator: NSObject, UIViewControllerAnimatedTransitioning {
       containerView.addSubview(fadingView)
       transitionContext.completeTransition(true)
     } else {
-      UIView.animate(withDuration: FadeAnimator.duration, animations: { fadingView.alpha = 0 }, completion: { _ in
-        transitionContext.completeTransition(true)
-      })
+      UIView.animate(
+        withDuration: FadeAnimator.duration,
+        animations: { fadingView.alpha = 0 },
+        completion: { _ in transitionContext.completeTransition(true) }
+      )
     }
   }
 }
